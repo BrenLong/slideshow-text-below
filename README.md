@@ -68,7 +68,7 @@ Continue in the **sections/slideshow.liquid** file
 
 Update the mobile setting label to use the new translation key
 
-- *Copy and find* this in the schema section:
+- *Find* this in the schema section:
 
 ```json
 "label": "t:sections.slideshow.settings.show_text_below.label",
