@@ -29,18 +29,19 @@ Open the **sections/slideshow.liquid** file
 
 Add the **desktop-text-below** class and CSS variable to the slideshow component
 
-- *Copy and find* this:
+- *Find* this:
 
 ```html
-<slideshow-component
-  class="slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}"
-  role="region"
+class="slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}"
 ```
 
 - *Replace* it with this:
 
 ```html
-
+class="slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}{% if section.settings.show_text_below_desktop %} desktop-text-below{% endif %}"
+  {% if section.settings.show_text_below_desktop %}
+    style="--desktop-text-width: {{ section.settings.desktop_text_width }}%;"
+  {% endif %}
 ```
 
 ### Step 2
@@ -49,20 +50,16 @@ Continue in the **sections/slideshow.liquid** file
 
 Add the **banner--desktop-bottom** class to the main slideshow container
 
-- *Copy and find* this:
+- *Find* this:
 
 ```html
-<div
-    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
-    id="Slider-{{ section.id }}"
+class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 ```
 
 - *Replace* it with this:
 
 ```html
-<div
-    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.settings.show_text_below_desktop %} banner--desktop-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
-    id="Slider-{{ section.id }}"
+class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.settings.show_text_below_desktop %} banner--desktop-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 ```
 
 ### Step 3
@@ -80,7 +77,7 @@ Update the mobile setting label to use the new translation key
 - *Replace* it with this:
 
 ```json
-  "label": "t:theme_support.settings.slideshow.show_text_below_mobile.label",
+"label": "t:theme_support.settings.slideshow.show_text_below_mobile.label",
 ```
 
 ### Step 4
@@ -89,18 +86,7 @@ Continue in the **sections/slideshow.liquid** file
 
 Add the Desktop header section with checkbox and width slider settings
 
-- *Find* the following setting in the schema:
-
-(copy and find `"content": "t:sections.slideshow.settings.accessibility.content"`)
-
-```json
-{
-  "type": "header",
-  "content": "t:sections.slideshow.settings.accessibility.content"
-},
-```
-
-- On a new line directly above that setting, *add* this:
+Underneath the `show_text_below` setting that you just modified, add this new setting on a new line after the closing `},`:
 
 ```json
 {
