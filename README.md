@@ -174,7 +174,7 @@ Add CSS rules that enable desktop text-below positioning by making banner media 
 
 Open the **locales/en.default.schema.json** file
 
-**Tip:** If `"theme_support": {` already exists, only add the new keys under the existing `theme_support.settings.slideshow` object. If it doesn't exist, add the full block below. See [adding TS translations](https://github.com/Shopify/ts-code-snippets/issues/172) for more.
+If `"theme_support": {` already exists, only add the new keys under the existing `theme_support.settings.slideshow` object. If it doesn't exist, add the full block below. See [adding TS translations](https://github.com/Shopify/ts-code-snippets/issues/172) for more.
 
 ```json
 "theme_support": {
