@@ -202,7 +202,7 @@ Merchant instructions for using the new settings
 
 #### How to enable
 
-1. Go to Online Store → Themes → Customize
+1. Go to Online Store → Themes → Edit theme
 2. Select the Slideshow section
 3. Scroll to the Desktop section in settings
 4. Enable "Show text below slideshow on desktop"
